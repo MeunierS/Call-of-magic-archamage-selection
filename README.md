@@ -6,7 +6,6 @@
 - [Objective](#Objective)
 - [Time Limitation](#TimeLimitation)
 - [Extra if enough time](#Extra)
-- [Programming langage & Software](#Lang)
 - [Game Concept Document](#GCD)
 - [Working Title](#Title)
 - [Concept Statement](#Concept)
@@ -46,57 +45,59 @@ Due to limitation in the time permitted for the project a number of restriction 
 + upgrade of bot AI
 + more maps
 
-<a id="Lang"></a>
-## Programming langage & Software
-+ C#
-+ Unity
-+ Blender
-
 <a id="GCD"></a>
 ## Game Concept Document
 <a id="Title"></a>
 ### Working Title
-  Cutetopia Archmage Selection
+  Cutetopia Archmage Selection.
   
 <a id="Concept"></a>
 ### Concept Statement
-  You are a cute Antropomorphic wizard participating in the Archmage Selection Match of the Kingdom of Cutetopia.
+  Become the new Archmage of the Kingdom of Cutetopia by emerging victorious in a free-for-all match.
   
 <a id="Genre"></a>
 ### Genre
-  Third Person Shooter
+  Third Person Shooter.
   
 <a id="Target"></a>
 ### Target Audience
-  ESRB Everyone 10+
+  ESRB Everyone 10+.
   
 <a id="Sell"></a>
 ### Unique Selling Points
-  It's a TPS that is cute so perfect for a first time shooter experience.
+  It's a TPS that has a cute aspect to it, so perfect for a first time shooter experience. No blood/Gore.
   
 <a id="POV"></a>
-### Player Experience and Game POV
-
+### Player Experience and Game POV.
+    
 <a id="Style"></a>
 ### Visual and Audio Style
-  Low Poly
+  Low Poly, Fun Music.
   
 <a id="World"></a>
 ### Game World Fiction
-
+  You are a cute animal wizard who wants to participate in the selection match for the position of Archmage of the Kingdom of Cutetopia. The World is a Heroic Fantasy type where they are no humans.
+  
 <a id="Money"></a>
 ### Monetization
-  One time purchase as it is not a multiplayer game and thus has no server maintenance behind for now
+  One time purchase as it is not a multiplayer game and thus has no server maintenance behind for now.
   
 <a id="PTS"></a>
 ### Platform, Technology, and Scope
-
++ Only on PC
++ C# for scripting
++ 3D URP in Unity 
++ Blender for some assets
++ Solo Project
+  
 <a id="Loop"></a>
 ### Core Loops
-
+  15min match. Nothing else until Core project is in place.
+  
 <a id="Obj"></a>
 ### Objectives and Progression
-
+  No tutorial. Goal is to amass the most kills during the match.
+  
 <a id="Syst"></a>
 ### Game Systems
 
@@ -113,5 +114,4 @@ Repro creation: 2024/04/06
 
 <a id="Credits"></a>
 ## Credits
-
 [badges](https://shields.io/) (for the readme badges)
