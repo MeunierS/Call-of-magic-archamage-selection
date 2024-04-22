@@ -1,5 +1,6 @@
 ﻿# Cutetopia-Magic-Duelers
 ![](https://img.shields.io/badge/Project-NotReady-red)
+![](https://img.shields.io/badge/GCD-Incomplete-yellow)
 
 # Table of Contents
 - [Objective](#Objective)
