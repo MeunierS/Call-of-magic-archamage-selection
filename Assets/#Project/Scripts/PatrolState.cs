@@ -33,7 +33,7 @@ public class PatrolState : IState
         {
             SelectDestination();
         }
-        if (bot.CanSeePlayer()){
+        if (bot.CanSeePlayer().see){
             stateMachine.TransistionTo(stateMachine.chaseState);
         }
     }

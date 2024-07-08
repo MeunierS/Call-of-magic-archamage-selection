@@ -14,14 +14,15 @@ public class ChaseState : IState
         this.bot = bot;
         this.stateMachine = stateMachine;
         agent = bot.agent;
-        target = bot.target;
     }
     public void Enter(){
         Debug.Log("Entering Chase State");
+        target = bot.CanSeePlayer().tar;
     }
     public void Perform(){
         agent.SetDestination(target.position);
-        if (!bot.CanSeePlayer()){
+        //todo insert bot shoot at target here
+        if (!bot.CanSeePlayer().see){
             stateMachine.TransistionTo(stateMachine.patrolState);
         }
     }
