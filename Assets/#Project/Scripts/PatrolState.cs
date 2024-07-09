@@ -25,7 +25,6 @@ public class PatrolState : IState
         agent.SetDestination(target.position);
     }
     public void Enter(){
-        Debug.Log("Entering Patrol State");
         SelectDestination();
     }
     public void Perform(){
@@ -38,6 +37,5 @@ public class PatrolState : IState
         }
     }
     public void Exit(){
-        Debug.Log("Exiting Patrol State");
     }
 }

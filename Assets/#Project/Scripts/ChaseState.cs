@@ -16,7 +16,6 @@ public class ChaseState : IState
         agent = bot.agent;
     }
     public void Enter(){
-        Debug.Log("Entering Chase State");
         target = bot.CanSeePlayer().tar;
     }
     public void Perform(){
@@ -27,7 +26,6 @@ public class ChaseState : IState
         }
     }
     public void Exit(){
-        Debug.Log("Exiting Chase State");
     }
     
 }

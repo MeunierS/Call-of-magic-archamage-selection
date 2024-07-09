@@ -10,9 +10,11 @@ public class PlayerControl : MonoBehaviour
     private InputAction jump;
     public float jumpHeight;
     private InputAction shoot;
+    public Projectile projectile;
     [SerializeField] private float speed;
     private Camera myCamera;
     private Vector3 forward, right;
+    private Rigidbody rb;
     //public bool moving { get; private set;}
 
     void Awake(){
@@ -26,6 +28,7 @@ public class PlayerControl : MonoBehaviour
     void Start()
     {
         myCamera = Camera.main;
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -39,9 +42,9 @@ public class PlayerControl : MonoBehaviour
 
         Vector2 movement = move.ReadValue<Vector2>();
         //moving = movement != Vector2.zero;
-        Vector3 finalMovement = movement.x * right + movement.y * forward;
-
-        transform.position += finalMovement * Time.deltaTime * speed;
+        Vector3 finalMovement = movement.x * right * speed + movement.y * forward * speed + rb.velocity.y * Vector3.up;
+        rb.velocity = finalMovement;//  * speed;
+        //  transform.Translate(finalMovement * Time.deltaTime * speed);
     }
     void OnEnable()
     {
@@ -56,25 +59,21 @@ public class PlayerControl : MonoBehaviour
         shoot.Disable();
     }
     void OnShoot(InputAction.CallbackContext ctx){
-        Debug.Log("Shoot !");
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            RaycastHit hit;
-            if(Physics.Raycast(ray, out hit)){
-                if(hit.collider.CompareTag("Bot")){
-                    Debug.Log("Bot touched !");
-                    //todo shoot mechanic here
-                }
-            }
+        //* this works
+        Projectile instantiatedProjectile = Instantiate(projectile, transform.position + Vector3.up *1.5f, Camera.main.transform.rotation, null);
+        instantiatedProjectile.GetComponent<Rigidbody>().velocity= Camera.main.transform.forward * 20;
+        //! this doesn't
+        // projectile.Initialize();
+        // projectile.transform.position = transform.position + Vector3.up *1.5f;
+        // Debug.Log(projectile.transform.position);
+        //projectile.transform.Translate(Camera.main.transform.forward * 20 * Time.deltaTime);
+        //projectile.GetComponent<Rigidbody>().velocity= Camera.main.transform.forward * 20;
     }
     void OnJump(InputAction.CallbackContext ctx){
-        Debug.Log("Jump");
-        if (transform.position.y > 0.6){
-                return;
+        Vector3 feet = transform.position + Vector3.down;
+        if (!Physics.Raycast(feet, Vector3.down, 0.1f)){
+            return;
         }
-        Vector3 jumpAction;
-        jumpAction.y = jumpHeight;
-        jumpAction.x = transform.position.x;
-        jumpAction.z = transform.position.z;
-        transform.position = jumpAction;
+        rb.velocity = Vector3.up  * jumpHeight;
     }
 }
