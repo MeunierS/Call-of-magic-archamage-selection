@@ -1,15 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class ChaseState : IState
 {
-    private NavMeshAgent agent;
+    public NavMeshAgent agent;
     private Transform target;
     private Bot bot;
     private BotStateMachine stateMachine;
-
+    public float cooldown = 0.5f;
     public ChaseState(Bot bot, BotStateMachine stateMachine){
         this.bot = bot;
         this.stateMachine = stateMachine;
@@ -20,12 +21,22 @@ public class ChaseState : IState
     }
     public void Perform(){
         agent.SetDestination(target.position);
-        //todo insert bot shoot at target here
+        //bot shoot at target
+        Shoot();
         if (!bot.CanSeePlayer().see){
             stateMachine.TransistionTo(stateMachine.patrolState);
         }
     }
     public void Exit(){
     }
-    
+    public void Shoot(){
+        if (cooldown > 0){
+            cooldown -= Time.deltaTime;
+        }
+        if (cooldown <= 0){
+            cooldown = 0.5f;
+            Projectile instantiatedProjectile = GameObject.Instantiate(bot.projectile, bot.transform.position + bot.transform.forward * 1f, bot.transform.rotation);
+            instantiatedProjectile.GetComponent<Rigidbody>().velocity= bot.transform.forward * 20;
+        }
+    }
 }

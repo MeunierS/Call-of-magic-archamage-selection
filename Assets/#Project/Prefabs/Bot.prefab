@@ -154,6 +154,8 @@ MonoBehaviour:
   target: {fileID: 0}
   agent: {fileID: 0}
   waypoints: {fileID: 0}
+  projectile: {fileID: 3585871912247546481, guid: d93a08b7f52a67e44951d4d2a5e117e5,
+    type: 3}
 --- !u!1 &3486461609844383580
 GameObject:
   m_ObjectHideFlags: 0

@@ -11,7 +11,11 @@ public class Bot : MonoBehaviour
     [HideInInspector] public Transform target;
     [HideInInspector] public NavMeshAgent agent;
     public Transform waypoints;
-    private BotStateMachine stateMachine;
+    public Transform spawnpoints;
+    [HideInInspector] public BotStateMachine stateMachine;
+    public Projectile projectile;
+    public float respawnTimer = 2.1f;
+    public bool isRespawning = false;
 
     public (bool see, Transform tar) CanSeePlayer(){
         Vector3 botFacing = transform.forward;
@@ -44,5 +48,24 @@ public class Bot : MonoBehaviour
     void Update()
     {
         stateMachine.Update();
+    }
+    public void StartRespawn(){
+        StartCoroutine(Respawn());
+        
+    }
+    //coroutine
+    IEnumerator Respawn(){
+        float timer = 0f;
+        isRespawning = true;
+        //yield return new WaitForSeconds(1f);
+        while(timer < respawnTimer){
+            timer+= Time.deltaTime;
+            yield return null;
+        }
+        int numSpawnpoints = spawnpoints.childCount;
+        int rndIndex = Random.Range(0, numSpawnpoints);
+        Transform target = spawnpoints.GetChild(rndIndex);
+        transform.position = target.position;
+        isRespawning = false;
     }
 }

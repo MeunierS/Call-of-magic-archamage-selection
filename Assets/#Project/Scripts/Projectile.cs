@@ -26,12 +26,35 @@ public class Projectile : MonoBehaviour
         }
     }
     void OnTriggerEnter(Collider other){
-        //todo: other collider behavior
         //* 1) play explosion on impact
         GameObject explo = Instantiate(explosion, transform.position, transform.rotation);
         explo.GetComponent<ParticleSystem>().Play();
         Destroy(explo, 1f);
         //* 2) kill & respawn if player or bot
+        //Player
+        if (other.CompareTag("Player")){
+            if (!other.GetComponent<PlayerControl>().isRespawning){
+                //todo award a point in leaderboard
+                
+                //launch dissolve (+ block shooting + block movement)
+                other.GetComponent<ObjectDissolve>().StartDissolve();
+
+                //respawn victim somewhere else
+                other.GetComponentInParent<PlayerControl>().StartRespawn();
+            }
+        }
+        //Bot
+        if (other.CompareTag("Bot")){
+            if (!other.GetComponent<Bot>().isRespawning){
+                //todo award a point in leaderboard
+
+                //launch dissolve (+ block shooting + block movement)
+                other.GetComponent<ObjectDissolve>().StartDissolve();
+
+                //respawn victim somewhere else
+                other.GetComponentInParent<Bot>().StartRespawn();
+            }
+        }
         //this.Die();
         Destroy(gameObject);
     }

@@ -14,7 +14,12 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private float speed;
     private Camera myCamera;
     private Vector3 forward, right;
+    public float cooldown = 0.5f;
+    public float respawnTimer = 2.1f;
     private Rigidbody rb;
+    public bool allowedToMove = true;
+    public bool isRespawning = false;
+    public Transform spawnpoints;
     //public bool moving { get; private set;}
 
     void Awake(){
@@ -34,17 +39,27 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        forward = myCamera.transform.forward;
-        right = myCamera.transform.right;
+        //rotate player with camera
+        transform.rotation = myCamera.transform.rotation;
 
-        forward = Vector3.ProjectOnPlane(forward,Vector3.up).normalized;
-        right = Vector3.ProjectOnPlane(right, Vector3.up).normalized;
+        //shoot cooldown
+        if (cooldown > 0){
+            cooldown -= Time.deltaTime;
+        }
+        
+        //movement
+        if (allowedToMove){
+            forward = myCamera.transform.forward;
+            right = myCamera.transform.right;
 
-        Vector2 movement = move.ReadValue<Vector2>();
-        //moving = movement != Vector2.zero;
-        Vector3 finalMovement = movement.x * right * speed + movement.y * forward * speed + rb.velocity.y * Vector3.up;
-        rb.velocity = finalMovement;//  * speed;
-        //  transform.Translate(finalMovement * Time.deltaTime * speed);
+            forward = Vector3.ProjectOnPlane(forward,Vector3.up).normalized;
+            right = Vector3.ProjectOnPlane(right, Vector3.up).normalized;
+
+            Vector2 movement = move.ReadValue<Vector2>();
+            //moving = movement != Vector2.zero;
+            Vector3 finalMovement = movement.x * right * speed + movement.y * forward * speed + rb.velocity.y * Vector3.up;
+            rb.velocity = finalMovement;//  * speed;
+        }
     }
     void OnEnable()
     {
@@ -60,8 +75,11 @@ public class PlayerControl : MonoBehaviour
     }
     void OnShoot(InputAction.CallbackContext ctx){
         //* this works
-        Projectile instantiatedProjectile = Instantiate(projectile, transform.position + Vector3.up *1.5f, Camera.main.transform.rotation, null);
-        instantiatedProjectile.GetComponent<Rigidbody>().velocity= Camera.main.transform.forward * 20;
+        if (cooldown <= 0){
+            cooldown = 0.5f;
+            Projectile instantiatedProjectile = Instantiate(projectile, transform.position + transform.forward * 1f, Camera.main.transform.rotation, null);
+            instantiatedProjectile.GetComponent<Rigidbody>().velocity= Camera.main.transform.forward * 20;
+        }
         //! this doesn't
         // projectile.Initialize();
         // projectile.transform.position = transform.position + Vector3.up *1.5f;
@@ -75,5 +93,24 @@ public class PlayerControl : MonoBehaviour
             return;
         }
         rb.velocity = Vector3.up  * jumpHeight;
+    }
+    public void StartRespawn(){
+        StartCoroutine(Respawn());
+        
+    }
+    //coroutine
+    IEnumerator Respawn(){
+        float timer = 0f;
+        isRespawning = true;
+        //yield return new WaitForSeconds(1f);
+        while(timer < respawnTimer){
+            timer+= Time.deltaTime;
+            yield return null;
+        }
+        int numSpawnpoints = spawnpoints.childCount;
+        int rndIndex = Random.Range(0, numSpawnpoints);
+        Transform target = spawnpoints.GetChild(rndIndex);
+        transform.position = target.position;
+        isRespawning = false;
     }
 }
