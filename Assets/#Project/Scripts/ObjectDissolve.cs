@@ -71,6 +71,7 @@ public class ObjectDissolve : MonoBehaviour
         //if player
         if (this.GetComponentInParent<PlayerControl>() != null){
             //reset player
+            this.GetComponentInParent<PlayerControl>().cooldown = .5f;
             this.GetComponentInParent<PlayerControl>().allowedToMove = true;
         }
     }

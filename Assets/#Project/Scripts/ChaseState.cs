@@ -35,7 +35,7 @@ public class ChaseState : IState
         }
         if (cooldown <= 0){
             cooldown = 0.5f;
-            Projectile instantiatedProjectile = GameObject.Instantiate(bot.projectile, bot.transform.position + bot.transform.forward * 1f, bot.transform.rotation);
+            Projectile instantiatedProjectile = GameObject.Instantiate(bot.projectile, bot.transform.position + bot.transform.forward * 1f, bot.transform.rotation, bot.transform);
             instantiatedProjectile.GetComponent<Rigidbody>().velocity= bot.transform.forward * 20;
         }
     }

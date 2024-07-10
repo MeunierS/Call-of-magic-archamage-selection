@@ -20,6 +20,9 @@ public class PlayerControl : MonoBehaviour
     public bool allowedToMove = true;
     public bool isRespawning = false;
     public Transform spawnpoints;
+    [HideInInspector]public int scoreTarget = 6;
+    [HideInInspector]public int personnalKill = 0;
+    [HideInInspector]public int personnalDeath = 0;
     //public bool moving { get; private set;}
 
     void Awake(){
@@ -77,7 +80,7 @@ public class PlayerControl : MonoBehaviour
         //* this works
         if (cooldown <= 0){
             cooldown = 0.5f;
-            Projectile instantiatedProjectile = Instantiate(projectile, transform.position + transform.forward * 1f, Camera.main.transform.rotation, null);
+            Projectile instantiatedProjectile = Instantiate(projectile, transform.position + transform.forward * 1f, Camera.main.transform.rotation, transform);
             instantiatedProjectile.GetComponent<Rigidbody>().velocity= Camera.main.transform.forward * 20;
         }
         //! this doesn't

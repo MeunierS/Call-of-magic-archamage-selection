@@ -16,6 +16,9 @@ public class Bot : MonoBehaviour
     public Projectile projectile;
     public float respawnTimer = 2.1f;
     public bool isRespawning = false;
+    [SerializeField]public int scoreTarget;
+    [HideInInspector]public int personnalKill = 0;
+    [HideInInspector]public int personnalDeath = 0;
 
     public (bool see, Transform tar) CanSeePlayer(){
         Vector3 botFacing = transform.forward;

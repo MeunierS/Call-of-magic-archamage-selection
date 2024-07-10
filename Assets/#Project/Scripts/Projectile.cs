@@ -33,9 +33,14 @@ public class Projectile : MonoBehaviour
         //* 2) kill & respawn if player or bot
         //Player
         if (other.CompareTag("Player")){
-            if (!other.GetComponent<PlayerControl>().isRespawning){
-                //todo award a point in leaderboard
-                
+            if (!other.GetComponentInParent<PlayerControl>().isRespawning){
+                //case a bot kill a player
+                if(this.GetComponentInParent<Bot>() != null){
+                    this.GetComponentInParent<Bot>().personnalKill++;
+                    other.GetComponentInParent<PlayerControl>().personnalDeath++;
+                }
+                //todo future case a player kill another player
+
                 //launch dissolve (+ block shooting + block movement)
                 other.GetComponent<ObjectDissolve>().StartDissolve();
 
@@ -46,8 +51,16 @@ public class Projectile : MonoBehaviour
         //Bot
         if (other.CompareTag("Bot")){
             if (!other.GetComponent<Bot>().isRespawning){
-                //todo award a point in leaderboard
-
+                //case a bot kill a bot
+                if(this.GetComponentInParent<Bot>() != null){
+                    this.GetComponentInParent<Bot>().personnalKill++;
+                    other.GetComponentInParent<Bot>().personnalDeath++;
+                }
+                //case a player kill a bot
+                if(this.GetComponentInParent<PlayerControl>() != null){
+                    this.GetComponentInParent<PlayerControl>().personnalKill++;
+                    other.GetComponentInParent<Bot>().personnalDeath++;
+                }
                 //launch dissolve (+ block shooting + block movement)
                 other.GetComponent<ObjectDissolve>().StartDissolve();
 

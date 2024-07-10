@@ -8,6 +8,8 @@ TagManager:
   - Navpoint
   - Bot
   - SpawnPoint
+  - Pause
+  - ScoreBoard
   layers:
   - Default
   - TransparentFX
