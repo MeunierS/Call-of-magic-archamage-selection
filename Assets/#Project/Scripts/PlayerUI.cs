@@ -8,8 +8,8 @@ public class PlayerUI : MonoBehaviour
     //*Order : [0 - 5] Bot 0 -> Bot 5, [6]  Player
     [SerializeField] TMP_Text[] scores;
     // Bot names: 0-Carlina, 1-Gideon, 2-Uliath, 3-Remagine, 4-Sicofla, 5-Jaygee, 6-You
-    [SerializeField] string[] botNames;
-    [SerializeField] Transform[] players;
+    [SerializeField] public string[] botNames;
+    [SerializeField] public Transform[] players;
     
     // Start is called before the first frame update
     void Start()
