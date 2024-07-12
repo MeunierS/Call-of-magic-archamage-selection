@@ -116,7 +116,7 @@ Repro creation: 2024/04/06
 + 2024/07/08: Bot State Machine; basic prefabs
 + 2024/07/09: pooling try but aborted; jump mechanic; asset collider reconnection; projectile with particles
 + 2024/07/10: basic scoreboard; respawn; dissolve and input block on touch
-+ 2024/07/12: Trello created for better view on project progression; fixed model rotation with camera; leaderboard put in order; Victory Screen; map exterior
++ 2024/07/12: Trello created for better view on project progression; fixed model rotation with camera; leaderboard put in order; Victory Screen; map exterior and a little rework around dummpsters & wooden boxes; more nav point & nav mesh rebake
 
 
 
