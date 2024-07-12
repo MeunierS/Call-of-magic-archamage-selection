@@ -111,6 +111,14 @@ Repro creation: 2024/04/06
 <a id="History"></a>
 ## Push History
 + 2024/04/06: Initialization of the project repository & README
++ 2024/04/23: Basic Title Screen
++ 2024/07/04: Basic Map
++ 2024/07/08: Bot State Machine; basic prefabs
++ 2024/07/09: pooling try but aborted; jump mechanic; asset collider reconnection; projectile with particles
++ 2024/07/10: basic scoreboard; respawn; dissolve and input block on touch
++ 2024/07/12: Trello created for better view on project progression; fixed model rotation with camera; leaderboard put in order
+
+
 
 <a id="Credits"></a>
 ## Credits

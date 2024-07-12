@@ -43,7 +43,8 @@ public class PlayerControl : MonoBehaviour
     void Update()
     {
         //rotate player with camera
-        transform.rotation = myCamera.transform.rotation;
+        Quaternion modelRotation = new Quaternion (0, myCamera.transform.rotation.y, 0, myCamera.transform.rotation.w);
+        transform.rotation = modelRotation;
 
         //shoot cooldown
         if (cooldown > 0){
