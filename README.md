@@ -116,10 +116,14 @@ Repro creation: 2024/04/06
 + 2024/07/08: Bot State Machine; basic prefabs
 + 2024/07/09: pooling try but aborted; jump mechanic; asset collider reconnection; projectile with particles
 + 2024/07/10: basic scoreboard; respawn; dissolve and input block on touch
-+ 2024/07/12: Trello created for better view on project progression; fixed model rotation with camera; leaderboard put in order; Victory Screen
++ 2024/07/12: Trello created for better view on project progression; fixed model rotation with camera; leaderboard put in order; Victory Screen; map exterior
 
 
 
 <a id="Credits"></a>
 ## Credits
 [badges](https://shields.io/) (for the readme badges)
+[Asset](https://kenney.nl/assets/city-kit-commercial) (External City)
+[Asset](https://assetstore.unity.com/packages/vfx/particles/spells/magic-effects-free-247933) (Magical Effects)
+[Asset](https://assetstore.unity.com/packages/3d/environments/industrial/rpg-fps-game-assets-for-pc-mobile-industrial-set-v2-0-86679) (Industrial Assets in Level)
+
