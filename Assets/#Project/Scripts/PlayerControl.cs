@@ -12,7 +12,7 @@ public class PlayerControl : MonoBehaviour
     private InputAction shoot;
     public Projectile projectile;
     [SerializeField] private float speed;
-    private Camera myCamera;
+    public Camera myCamera;
     private Vector3 forward, right;
     public float cooldown = 0.5f;
     public float respawnTimer = 2.1f;
@@ -35,7 +35,7 @@ public class PlayerControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        myCamera = Camera.main;
+        //myCamera = Camera.main;
         rb = GetComponent<Rigidbody>();
     }
 
@@ -81,8 +81,8 @@ public class PlayerControl : MonoBehaviour
         //* this works
         if (cooldown <= 0){
             cooldown = 0.5f;
-            Projectile instantiatedProjectile = Instantiate(projectile, transform.position + transform.forward * 1f, Camera.main.transform.rotation, transform);
-            instantiatedProjectile.GetComponent<Rigidbody>().velocity= Camera.main.transform.forward * 20;
+            Projectile instantiatedProjectile = Instantiate(projectile, transform.position + transform.forward * 1f, myCamera.transform.rotation, transform);
+            instantiatedProjectile.GetComponent<Rigidbody>().velocity= myCamera.transform.forward * 20;
         }
         //! this doesn't
         // projectile.Initialize();
