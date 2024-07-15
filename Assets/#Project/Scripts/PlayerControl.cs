@@ -12,7 +12,7 @@ public class PlayerControl : MonoBehaviour
     private InputAction shoot;
     public Projectile projectile;
     [SerializeField] private float speed;
-    public Camera myCamera;
+    private Camera myCamera;
     private Vector3 forward, right;
     public float cooldown = 0.5f;
     public float respawnTimer = 2.1f;
@@ -35,7 +35,7 @@ public class PlayerControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //myCamera = Camera.main;
+        myCamera = Camera.main;
         rb = GetComponent<Rigidbody>();
     }
 
@@ -60,7 +60,6 @@ public class PlayerControl : MonoBehaviour
             right = Vector3.ProjectOnPlane(right, Vector3.up).normalized;
 
             Vector2 movement = move.ReadValue<Vector2>();
-            //moving = movement != Vector2.zero;
             Vector3 finalMovement = movement.x * right * speed + movement.y * forward * speed + rb.velocity.y * Vector3.up;
             rb.velocity = finalMovement;//  * speed;
         }
@@ -78,18 +77,11 @@ public class PlayerControl : MonoBehaviour
         shoot.Disable();
     }
     void OnShoot(InputAction.CallbackContext ctx){
-        //* this works
         if (cooldown <= 0){
             cooldown = 0.5f;
             Projectile instantiatedProjectile = Instantiate(projectile, transform.position + transform.forward * 1f, myCamera.transform.rotation, transform);
             instantiatedProjectile.GetComponent<Rigidbody>().velocity= myCamera.transform.forward * 20;
         }
-        //! this doesn't
-        // projectile.Initialize();
-        // projectile.transform.position = transform.position + Vector3.up *1.5f;
-        // Debug.Log(projectile.transform.position);
-        //projectile.transform.Translate(Camera.main.transform.forward * 20 * Time.deltaTime);
-        //projectile.GetComponent<Rigidbody>().velocity= Camera.main.transform.forward * 20;
     }
     void OnJump(InputAction.CallbackContext ctx){
         Vector3 feet = transform.position + Vector3.down;
@@ -106,7 +98,6 @@ public class PlayerControl : MonoBehaviour
     IEnumerator Respawn(){
         float timer = 0f;
         isRespawning = true;
-        //yield return new WaitForSeconds(1f);
         while(timer < respawnTimer){
             timer+= Time.deltaTime;
             yield return null;
