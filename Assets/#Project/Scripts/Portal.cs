@@ -1,41 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Callbacks;
 using UnityEngine;
 
 public class Portal : MonoBehaviour
 {
-    [SerializeField] Transform otherPortal;
-    List<PortalableObject> portalableObjects = new();
+    [SerializeField] Portal[] otherPortal;
+    public Transform arrival;
+    [SerializeField] Cinemachine.CinemachineFreeLook cinemachine;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        foreach (PortalableObject obj in portalableObjects)
-        {
-            Vector3 localPosition = transform.InverseTransformPoint(obj.transform.position);
-            if (localPosition.z > 0){
-                obj.Teleport();
-            }
-        }
     }
 
-    void OnTriggerEnter(Collider other){
-        PortalableObject obj = other.GetComponent<PortalableObject>();
-        if(obj != null){
-            portalableObjects.Add(obj);
-            obj.EnterPortal(transform, otherPortal);
+    void OnTriggerEnter(Collider other)
+    {
+        Vector3 decal = Vector3.zero;
+        Vector3 tpPosition = otherPortal[Random.Range(0, otherPortal.Length)].arrival.transform.position;
+        if (other.CompareTag("Player"))
+        {
+            decal = tpPosition - other.transform.position;
+            cinemachine.OnTargetObjectWarped(other.transform, decal);
         }
-    }
-    void OnTriggerExit(Collider other){
-        PortalableObject obj = other.GetComponent<PortalableObject>();
-        if (portalableObjects.Contains(obj)){
-            portalableObjects.Remove(obj);
-        }
+        other.GetComponentInParent<Rigidbody>().velocity = Vector3.zero;
+        other.transform.position = tpPosition;
+
     }
 }

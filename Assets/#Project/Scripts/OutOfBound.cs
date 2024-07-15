@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class OutOfBound : MonoBehaviour
 {
+    Rigidbody rb;
     // Start is called before the first frame update
     void Start()
     {
-        
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -16,9 +17,10 @@ public class OutOfBound : MonoBehaviour
         if(transform.position.y < -3){
             Vector3 resetPosition;
             resetPosition.x= 0;
-            resetPosition.y= 1;
+            resetPosition.y= 3;
             resetPosition.z= 0;
             transform.position = resetPosition;
+            rb.velocity = new Vector3(0, 0, 0);
         }
     }
 }
