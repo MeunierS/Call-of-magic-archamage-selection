@@ -12,7 +12,7 @@ public class ObjectDissolve : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        material = GetComponent<Renderer>().material;
+        material = GetComponent<SkinnedMeshRenderer>().material;
         ResetDissolve();
         //StartDissolve();
         //Invoke("StartDissolve", 5f);

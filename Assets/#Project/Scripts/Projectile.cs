@@ -57,7 +57,7 @@ public class Projectile : MonoBehaviour
                     other.GetComponentInParent<Bot>().personnalDeath++;
                 }
                 //launch dissolve (+ block shooting + block movement)
-                other.GetComponent<ObjectDissolve>().StartDissolve();
+                other.GetComponentInChildren<ObjectDissolve>().StartDissolve();
 
                 //respawn victim somewhere else
                 other.GetComponentInParent<Bot>().StartRespawn();
