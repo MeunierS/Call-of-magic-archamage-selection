@@ -16,6 +16,7 @@ public class Bot : MonoBehaviour
     public Projectile projectile;
     public float respawnTimer = 2.1f;
     public bool isRespawning = false;
+    private Animator animator;
     [SerializeField]public int scoreTarget;
     [HideInInspector]public int personnalKill = 0;
     [HideInInspector]public int personnalDeath = 0;
@@ -45,6 +46,8 @@ public class Bot : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         stateMachine = new BotStateMachine(this);
         stateMachine.Initialize(stateMachine.patrolState);
+        animator = GetComponentInChildren<Animator>();
+        animator.SetBool("isMoving", true);
     }
 
     // Update is called once per frame
