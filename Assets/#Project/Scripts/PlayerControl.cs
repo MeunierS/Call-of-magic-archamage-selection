@@ -24,7 +24,6 @@ public class PlayerControl : MonoBehaviour
     [HideInInspector]public int personnalKill = 0;
     [HideInInspector]public int personnalDeath = 0;
     private Animator animator;
-    private bool isOnWall;
 
     void Awake(){
         move = actions.FindActionMap("main").FindAction("Move");
@@ -44,6 +43,16 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Vector3 feet = transform.position + Vector3.down;
+        Debug.DrawRay(feet, Vector3.down, Color.red, 1f);
+        //test if jumping
+        if (Physics.Raycast(feet, Vector3.down, 0.1f)){
+            animator.SetBool("isJumping", false);
+        }
+        else{
+            animator.SetBool("isJumping", true);
+        }
+
         //rotate player with camera
         Quaternion modelRotation = new Quaternion (0, myCamera.transform.rotation.y, 0, myCamera.transform.rotation.w);
         transform.rotation = modelRotation;
@@ -62,13 +71,12 @@ public class PlayerControl : MonoBehaviour
             right = Vector3.ProjectOnPlane(right, Vector3.up).normalized;
 
             Vector2 movement = move.ReadValue<Vector2>();
-            if(movement != null){
+            if(movement != Vector2.zero){
                 animator.SetBool("isMoving", true);
             }
             else{
                 animator.SetBool("isMoving", false);
             }
-
             Vector3 finalMovement = movement.x * right * speed + movement.y * forward * speed + rb.velocity.y * Vector3.up;
             rb.velocity = finalMovement;//  * speed;
         }
@@ -95,18 +103,7 @@ public class PlayerControl : MonoBehaviour
     void OnJump(InputAction.CallbackContext ctx){
         Vector3 feet = transform.position + Vector3.down;
         if (!Physics.Raycast(feet, Vector3.down, 0.1f)){
-            animator.SetBool("isJumping", true);
-            //test if on a wall
-            if (isOnWall){
-                animator.SetBool("isOnWall", true);
-            }
-            else{
-                animator.SetBool("isOnWall", false);
-            }
             return;
-        }
-        else{
-            animator.SetBool("isJumping", false);
         }
         rb.velocity = Vector3.up  * jumpHeight;
     }
@@ -129,16 +126,17 @@ public class PlayerControl : MonoBehaviour
         isRespawning = false;
     }
     void OnTriggerEnter(Collider other){
-        isOnWall = false;
         Vector3 feet = transform.position + Vector3.down;
-        if (!Physics.Raycast(feet, Vector3.down, 0.1f)){
+        //test if on a wall
+        animator.SetBool("isOnWall", false);
+        if (Physics.Raycast(feet, Vector3.down, 0.1f)){
             return;
         }
         else if(other.CompareTag("Bot")){
             return;
         }
         else{
-            isOnWall = true;
+            animator.SetBool("isOnWall", true);
             return;
         }
     }

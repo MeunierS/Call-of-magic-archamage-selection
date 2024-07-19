@@ -118,15 +118,30 @@ Repro creation: 2024/04/06
 + 2024/07/10: basic scoreboard; respawn; dissolve and input block on touch
 + 2024/07/12: Trello created for better view on project progression; fixed model rotation with camera; leaderboard put in order; Victory Screen; map exterior and a little rework around dummpsters & wooden boxes; more nav point & nav mesh rebake
 + 2024/07/15: Try at in-map portals (postponed); minimap following player; star symbol + bot names on minimap; pruning pooling system; option screen for volume UI (no connection)
-+ 2024/07/17: player model + bot model from assets; animator + imported animations
++ 2024/07/17: player model + bot model from assets; animator + imported animations; changed ground texture
++ 2024/07/19: Reintroduced minimap name of bots; recolor of textures for the different bots; match, menu music & spell sounds effect; mixer and volume settings; rebind controls options
 
 
 
 <a id="Credits"></a>
 ## Credits
-[badges](https://shields.io/) (for the readme badges)
+
+[Badges](https://shields.io/) (for the readme badges)
+
+[Texture](https://ambientcg.com/) (Concrete Ground Texture)
+
 [Asset](https://kenney.nl/assets/city-kit-commercial) (External City)
+
 [Asset](https://assetstore.unity.com/packages/vfx/particles/spells/magic-effects-free-247933) (Magical Effects)
+
 [Asset](https://assetstore.unity.com/packages/3d/environments/industrial/rpg-fps-game-assets-for-pc-mobile-industrial-set-v2-0-86679) (Industrial Assets in Level)
+
 [Asset](https://assetstore.unity.com/packages/3d/characters/humanoids/lowpoly-survival-character-rio-273074) (Player & Bots Model)
+
 [Animation](https://www.mixamo.com/#/) (Player & Bot Animations)
+
+[Music](https://incompetech.com/music/royalty-free/music.html) (Match & Menu Musics)
+
+[SFX](https://opengameart.org/content/80-cc0-rpg-sfx)(Fire Spell at Launch)
+
+[SFX](https://opengameart.org/content/2-high-quality-explosions)(Spell Explosion)

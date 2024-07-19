@@ -31,8 +31,8 @@ public class Projectile : MonoBehaviour
             if (!other.GetComponentInParent<PlayerControl>().isRespawning){
                 //case a bot kill a player
                 if(this.GetComponentInParent<Bot>() != null){
-                    this.GetComponentInParent<Bot>().personnalKill++;
-                    other.GetComponentInParent<PlayerControl>().personnalDeath++;
+                    MatchData._kills[this.GetComponentInParent<Bot>().scoreTarget]++;
+                    MatchData._deaths[other.GetComponentInParent<PlayerControl>().scoreTarget]++;
                 }
                 //todo future case a player kill another player
 
@@ -45,16 +45,16 @@ public class Projectile : MonoBehaviour
         }
         //Bot
         if (other.CompareTag("Bot")){
-            if (!other.GetComponent<Bot>().isRespawning){
+            if (!other.GetComponentInParent<Bot>().isRespawning){
                 //case a bot kill a bot
                 if(this.GetComponentInParent<Bot>() != null){
-                    this.GetComponentInParent<Bot>().personnalKill++;
-                    other.GetComponentInParent<Bot>().personnalDeath++;
+                    MatchData._kills[this.GetComponentInParent<Bot>().scoreTarget]++;
+                    MatchData._deaths[other.GetComponentInParent<Bot>().scoreTarget]++;
                 }
                 //case a player kill a bot
                 if(this.GetComponentInParent<PlayerControl>() != null){
-                    this.GetComponentInParent<PlayerControl>().personnalKill++;
-                    other.GetComponentInParent<Bot>().personnalDeath++;
+                    MatchData._kills[this.GetComponentInParent<PlayerControl>().scoreTarget]++;
+                    MatchData._deaths[other.GetComponentInParent<Bot>().scoreTarget]++;
                 }
                 //launch dissolve (+ block shooting + block movement)
                 other.GetComponentInChildren<ObjectDissolve>().StartDissolve();
