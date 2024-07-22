@@ -35,17 +35,17 @@ public class PlayerControl : MonoBehaviour
         shoot = actions.FindActionMap("main").FindAction("Shoot");
         jump.performed += ctx => {OnJump(ctx);};
         shoot.performed += ctx => {OnShoot(ctx);};
-        playerInputManager = FindObjectOfType<PlayerInputManager>();
+        //playerInputManager = FindObjectOfType<PlayerInputManager>();
 
         //convert layer mask (bit) to int
-        int layerToAdd = (int)Mathf.Log(playerLayers[0].value, 2);
+        //int layerToAdd = (int)Mathf.Log(playerLayers[0].value, 2);
 
         //set the layer
-        this.GetComponentInChildren<CinemachineFreeLook>().gameObject.layer = layerToAdd;
+        //this.GetComponentInChildren<CinemachineFreeLook>().gameObject.layer = layerToAdd;
         //add the layer
-        this.GetComponentInChildren<Camera>().cullingMask |= 1 << layerToAdd;
+        //this.GetComponentInChildren<Camera>().cullingMask |= 1 << layerToAdd;
         //set the action in the custom cinemachine Input andler
-        this.GetComponentInChildren<InputHandler>().horizontal = this.actions.FindAction("Look");
+        //this.GetComponent<InputHandler>().horizontal = this.actions.FindAction("Look");
     }
     // Start is called before the first frame update
     void Start()
@@ -100,14 +100,14 @@ public class PlayerControl : MonoBehaviour
         actions.FindActionMap("main").Enable();
         jump.Enable();
         shoot.Enable();
-        playerInputManager.onPlayerJoined += AddPlayer;
+        //playerInputManager.onPlayerJoined += AddPlayer;
     }
     void OnDisable()
     {
         actions.FindActionMap("main").Disable();
         jump.Disable();
         shoot.Disable();
-        playerInputManager.onPlayerJoined -= AddPlayer;
+        //playerInputManager.onPlayerJoined -= AddPlayer;
     }
     void OnShoot(InputAction.CallbackContext ctx){
         if (cooldown <= 0){
