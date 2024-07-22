@@ -1,10 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class PlayerControl : MonoBehaviour
 {
+    private List<PlayerInput> players = new List<PlayerInput>();
+    [SerializeField] private List<LayerMask> playerLayers;
     public InputActionAsset actions;
     private InputAction move;
     private InputAction jump;
@@ -24,6 +27,7 @@ public class PlayerControl : MonoBehaviour
     [HideInInspector]public int personnalKill = 0;
     [HideInInspector]public int personnalDeath = 0;
     private Animator animator;
+    private PlayerInputManager playerInputManager;
 
     void Awake(){
         move = actions.FindActionMap("main").FindAction("Move");
@@ -31,6 +35,17 @@ public class PlayerControl : MonoBehaviour
         shoot = actions.FindActionMap("main").FindAction("Shoot");
         jump.performed += ctx => {OnJump(ctx);};
         shoot.performed += ctx => {OnShoot(ctx);};
+        playerInputManager = FindObjectOfType<PlayerInputManager>();
+
+        //convert layer mask (bit) to int
+        int layerToAdd = (int)Mathf.Log(playerLayers[0].value, 2);
+
+        //set the layer
+        this.GetComponentInChildren<CinemachineFreeLook>().gameObject.layer = layerToAdd;
+        //add the layer
+        this.GetComponentInChildren<Camera>().cullingMask |= 1 << layerToAdd;
+        //set the action in the custom cinemachine Input andler
+        this.GetComponentInChildren<InputHandler>().horizontal = this.actions.FindAction("Look");
     }
     // Start is called before the first frame update
     void Start()
@@ -44,7 +59,6 @@ public class PlayerControl : MonoBehaviour
     void Update()
     {
         Vector3 feet = transform.position + Vector3.down;
-        Debug.DrawRay(feet, Vector3.down, Color.red, 1f);
         //test if jumping
         if (Physics.Raycast(feet, Vector3.down, 0.1f)){
             animator.SetBool("isJumping", false);
@@ -86,12 +100,14 @@ public class PlayerControl : MonoBehaviour
         actions.FindActionMap("main").Enable();
         jump.Enable();
         shoot.Enable();
+        playerInputManager.onPlayerJoined += AddPlayer;
     }
     void OnDisable()
     {
         actions.FindActionMap("main").Disable();
         jump.Disable();
         shoot.Disable();
+        playerInputManager.onPlayerJoined -= AddPlayer;
     }
     void OnShoot(InputAction.CallbackContext ctx){
         if (cooldown <= 0){
@@ -139,5 +155,20 @@ public class PlayerControl : MonoBehaviour
             animator.SetBool("isOnWall", true);
             return;
         }
+    }
+    public void AddPlayer(PlayerInput player){
+        players.Add(player);
+        Vector3 spawn = new Vector3(45.44f, 0, 30.13f);
+        player.transform.position = spawn;
+
+        //convert layer mask (bit) to int
+        int layerToAdd = (int)Mathf.Log(playerLayers[1].value, 2);
+
+        //set the layer
+        player.GetComponentInChildren<CinemachineFreeLook>().gameObject.layer = layerToAdd;
+        //add the layer (bitwise operation)
+        player.GetComponentInChildren<Camera>().cullingMask |= 1 << layerToAdd;
+        //set the action in the custom cinemachine Input andler
+        player.GetComponentInChildren<InputHandler>().horizontal = player.actions.FindAction("Look");
     }
 }
