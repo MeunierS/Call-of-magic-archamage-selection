@@ -10,7 +10,7 @@ public class ChaseState : IState
     private Transform target;
     private Bot bot;
     private BotStateMachine stateMachine;
-    public float cooldown = 0.5f;
+    public float cooldown = 1f;
     public ChaseState(Bot bot, BotStateMachine stateMachine){
         this.bot = bot;
         this.stateMachine = stateMachine;
@@ -34,7 +34,7 @@ public class ChaseState : IState
             cooldown -= Time.deltaTime;
         }
         if (cooldown <= 0){
-            cooldown = 0.5f;
+            cooldown = 1f;
             Projectile instantiatedProjectile = GameObject.Instantiate(bot.projectile, bot.transform.position + bot.transform.forward * 1f + Vector3.up, bot.transform.rotation, bot.transform);
             instantiatedProjectile.GetComponent<Rigidbody>().velocity= bot.transform.forward * 20;
         }

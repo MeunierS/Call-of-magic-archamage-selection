@@ -17,7 +17,7 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private float speed;
     private Camera myCamera;
     private Vector3 forward, right;
-    public float cooldown = 0.5f;
+    public float cooldown = 1f;
     public float respawnTimer = 2.1f;
     private Rigidbody rb;
     public bool allowedToMove = true;

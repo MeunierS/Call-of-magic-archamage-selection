@@ -2673,7 +2673,7 @@ MonoBehaviour:
   projectile: {fileID: 7885425154672909299, guid: f09ee41da77fee54286e549814437b0c,
     type: 3}
   speed: 8
-  cooldown: 0.5
+  cooldown: 1
   respawnTimer: 2.1
   allowedToMove: 1
   isRespawning: 0
@@ -2788,7 +2788,7 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 1
-  m_DefaultControlScheme: Controller
+  m_DefaultControlScheme: 
   m_DefaultActionMap: main
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 7278926287720422148}
@@ -2799,7 +2799,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3445227912134997550}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 621567455fd1c4ceb811cc8a00b6a1a5, type: 3}
   m_Name: 
@@ -2874,7 +2874,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3445227912134997550}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb7194dc27b9df64c8beca7482ee8e0d, type: 3}
   m_Name: 
@@ -4302,7 +4302,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5003229436311653778}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.03575709, y: -0.5511764, z: 0.023651486, w: 0.83328664}
+  m_LocalRotation: {x: 0.035757106, y: -0.5511765, z: 0.02365149, w: 0.83328664}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5314,7 +5314,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6406003885986175008}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.02059412, y: -0.55151546, z: 0.013621956, w: 0.8337992}
+  m_LocalRotation: {x: 0.020594122, y: -0.5515155, z: 0.013621957, w: 0.8337992}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
