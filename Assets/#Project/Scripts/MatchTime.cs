@@ -20,7 +20,7 @@ public class MatchTime : MonoBehaviour
     {
         CultureInfo.DefaultThreadCurrentCulture = CultureInfo.InvariantCulture;
         timeElapsed -= Time.deltaTime;
-        timerText.SetText($"{timeElapsed:0.00}");
+        timerText.SetText($"{timeElapsed:0.00} s");
         if(timeElapsed < 0){
             EndMatch();
         }

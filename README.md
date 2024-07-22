@@ -120,6 +120,7 @@ Repro creation: 2024/04/06
 + 2024/07/15: Try at in-map portals (postponed); minimap following player; star symbol + bot names on minimap; pruning pooling system; option screen for volume UI (no connection)
 + 2024/07/17: player model + bot model from assets; animator + imported animations; changed ground texture
 + 2024/07/19: Reintroduced minimap name of bots; recolor of textures for the different bots; match, menu music & spell sounds effect; mixer and volume settings; rebind controls options
++ 2024/07/22: objective panel on main screen; UI paper elements; cursive font
 
 
 
@@ -145,3 +146,7 @@ Repro creation: 2024/04/06
 [SFX](https://opengameart.org/content/80-cc0-rpg-sfx)(Fire Spell at Launch)
 
 [SFX](https://opengameart.org/content/2-high-quality-explosions)(Spell Explosion)
+
+[UI](https://humblepixel.itch.io/pocket-inventory-series-5-player-status)(Paper Like UI Element)
+
+[Font](https://www.1001fonts.com/cursive-fonts.html)(Cursive Font)

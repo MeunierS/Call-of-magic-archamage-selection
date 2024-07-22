@@ -16,9 +16,9 @@ public class OutOfBound : MonoBehaviour
     {
         if(transform.position.y < -3){
             Vector3 resetPosition;
-            resetPosition.x= 0;
+            resetPosition.x= transform.position.x;
             resetPosition.y= 3;
-            resetPosition.z= 0;
+            resetPosition.z= transform.position.z;
             transform.position = resetPosition;
             rb.velocity = new Vector3(0, 0, 0);
         }
