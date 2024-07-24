@@ -6,13 +6,13 @@ using UnityEngine.InputSystem;
 
 public class PlayerControl : MonoBehaviour
 {
+
+    [SerializeField] InputActionAsset[] inputAssets;
+    private InputActionMap playerAM;
     private List<PlayerInput> players = new List<PlayerInput>();
     [SerializeField] private List<LayerMask> playerLayers;
-    public InputActionAsset actions;
     private InputAction move;
-    private InputAction jump;
     public float jumpHeight;
-    private InputAction shoot;
     public Projectile projectile;
     [SerializeField] private float speed;
     private Camera myCamera;
@@ -29,29 +29,25 @@ public class PlayerControl : MonoBehaviour
     private Animator animator;
     private PlayerInputManager playerInputManager;
 
+    private static int playerNumber = 1;
+
     void Awake(){
-        move = actions.FindActionMap("main").FindAction("Move");
-        jump = actions.FindActionMap("main").FindAction("Jump");
-        shoot = actions.FindActionMap("main").FindAction("Shoot");
-        jump.performed += ctx => {OnJump(ctx);};
-        shoot.performed += ctx => {OnShoot(ctx);};
-        //playerInputManager = FindObjectOfType<PlayerInputManager>();
 
-        //convert layer mask (bit) to int
-        //int layerToAdd = (int)Mathf.Log(playerLayers[0].value, 2);
-
-        //set the layer
-        //this.GetComponentInChildren<CinemachineFreeLook>().gameObject.layer = layerToAdd;
-        //add the layer
-        //this.GetComponentInChildren<Camera>().cullingMask |= 1 << layerToAdd;
-        //set the action in the custom cinemachine Input andler
-        //this.GetComponent<InputHandler>().horizontal = this.actions.FindAction("Look");
+        if(playerNumber == 1){
+            //GetComponent<PlayerInput>().actions =p1.asset;
+            playerAM = inputAssets[0].FindActionMap("main");
+            playerNumber++;
+        }
+        else{
+            //GetComponent<PlayerInput>().actions = p2.asset;
+            playerAM = inputAssets[1].FindActionMap("main");
+        }
+        myCamera = GetComponentInChildren<Camera>();
+        rb = GetComponent<Rigidbody>();
     }
     // Start is called before the first frame update
     void Start()
     {
-        myCamera = Camera.main;
-        rb = GetComponent<Rigidbody>();
         animator = GetComponentInChildren<Animator>();
     }
 
@@ -97,21 +93,46 @@ public class PlayerControl : MonoBehaviour
     }
     void OnEnable()
     {
-        actions.FindActionMap("main").Enable();
-        jump.Enable();
-        shoot.Enable();
+        // if(playerNumber == 1){
+        //     p1.main.Jump.started += OnJump;
+        //     p1.main.Shoot.performed += OnShoot;
+        //     move = p1.main.Move;
+        //     p1.main.Enable();
+        // }
+        // else{
+        //     p2.main.Jump.started += OnJump;
+        //     p2.main.Shoot.performed += OnShoot;
+        //     move = p2.main.Move;
+        //     p2.main.Enable();
+        // }
+        playerAM.FindAction("Jump").started += OnJump;
+        playerAM.FindAction("Shoot").performed += OnShoot;
+        move = playerAM.FindAction("Move");
+        playerAM.Enable();
+
         //playerInputManager.onPlayerJoined += AddPlayer;
     }
     void OnDisable()
     {
-        actions.FindActionMap("main").Disable();
-        jump.Disable();
-        shoot.Disable();
+        // if(playerNumber == 1){
+        //     p1.main.Jump.started -= OnJump;
+        //     p1.main.Shoot.performed -= OnShoot;
+        //     p1.main.Disable();
+        // }
+        // else{
+        //     p2.main.Jump.started -= OnJump;
+        //     p2.main.Shoot.performed -= OnShoot;
+        //     p2.main.Disable();
+        // }
+        playerAM.FindAction("Jump").started -= OnJump;
+        playerAM.FindAction("Shoot").performed -= OnShoot;
+        playerAM.Disable();
+
         //playerInputManager.onPlayerJoined -= AddPlayer;
     }
     void OnShoot(InputAction.CallbackContext ctx){
         if (cooldown <= 0){
-            cooldown = 0.5f;
+            cooldown = 1f;
             Projectile instantiatedProjectile = Instantiate(projectile, transform.position + transform.forward * 1f, myCamera.transform.rotation, transform);
             instantiatedProjectile.GetComponent<Rigidbody>().velocity= myCamera.transform.forward * 20;
         }

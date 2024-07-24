@@ -1,8 +1,8 @@
 {
-    "name": "Main",
+    "name": "PlayerActions",
     "maps": [
         {
-            "name": "main",
+            "name": "mainP1",
             "id": "7a11d207-106d-4ccd-ad10-cde21c5c6474",
             "actions": [
                 {
@@ -34,21 +34,12 @@
                 },
                 {
                     "name": "Look",
-                    "type": "Value",
+                    "type": "PassThrough",
                     "id": "17269264-93ed-4fcf-893d-d7aa72af5099",
                     "expectedControlType": "Vector2",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
-                },
-                {
-                    "name": "P2 Join",
-                    "type": "Button",
-                    "id": "8cb6319e-7f34-4cf7-9408-7bd6cfb4b142",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -59,17 +50,6 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard+Mouse",
-                    "action": "Shoot",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "9b23e123-968f-4f66-8251-59229182f81a",
-                    "path": "<Gamepad>/rightTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Controller",
                     "action": "Shoot",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -131,33 +111,11 @@
                 },
                 {
                     "name": "",
-                    "id": "58e39400-5410-429a-b872-668a0ae17cd5",
-                    "path": "<Gamepad>/leftStick",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Controller",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "2e7c9921-f222-4443-98d2-d7294845a814",
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard+Mouse",
-                    "action": "Jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "e6dca644-0c29-47f3-8846-446f69532e3e",
-                    "path": "<Gamepad>/buttonSouth",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Controller",
                     "action": "Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -172,10 +130,96 @@
                     "action": "Look",
                     "isComposite": false,
                     "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "mainP2",
+            "id": "e33eca61-e398-4e71-b7ad-080badb4d31a",
+            "actions": [
+                {
+                    "name": "Shoot",
+                    "type": "Button",
+                    "id": "4df27756-d931-4b74-9f9a-293ab4cc682d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Move",
+                    "type": "Value",
+                    "id": "38364e87-04f9-419f-a88f-c4aacc1e1b85",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "c433224d-5ca0-4704-9a37-eb98ec408f0a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Look",
+                    "type": "PassThrough",
+                    "id": "c9cabe3e-8162-4023-9614-9ad9b55bd706",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "P2Join",
+                    "type": "Button",
+                    "id": "fb102580-df8a-4dd3-80af-f7b28539d658",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "1c70564e-a542-409b-961e-42caf3eb1724",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "f0805b7d-7da0-4b67-a2ec-11e40d37cdaa",
+                    "id": "dc79420a-6a02-4649-aba9-8da0d1dcd555",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Move",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "193a5d9f-c34c-48d4-839b-76aa1daf8733",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ad763d12-a514-417c-b0fd-5a9fe8d23660",
                     "path": "<Gamepad>/rightStick",
                     "interactions": "",
                     "processors": "",
@@ -186,12 +230,12 @@
                 },
                 {
                     "name": "",
-                    "id": "8af194f0-4e79-4a2c-bd6f-6e0e9c5e23a3",
+                    "id": "fc9208e6-61f0-4a64-8c26-257139767e8f",
                     "path": "<Gamepad>/start",
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
-                    "action": "P2 Join",
+                    "action": "P2Join",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
