@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class Bot : MonoBehaviour
 {
-    [SerializeField] public Transform[] targets;
-    [HideInInspector] public Transform target;
+    [SerializeField] public List<GameObject> targets;
+    [HideInInspector] public GameObject target;
     [HideInInspector] public NavMeshAgent agent;
     public Transform waypoints;
     public Transform spawnpoints;
@@ -20,16 +21,17 @@ public class Bot : MonoBehaviour
     [SerializeField]public int scoreTarget;
     [HideInInspector]public int personnalKill = 0;
     [HideInInspector]public int personnalDeath = 0;
+    private PlayerInputManager playerInputManager;
 
-    public (bool see, Transform tar) CanSeePlayer(){
+    public (bool see, GameObject tar) CanSeePlayer(){
         Vector3 botFacing = transform.forward;
         Vector3 botPos = transform.position;
         Vector3 offset = Vector3.up * 0.2f;
         RaycastHit hit;
-        foreach (Transform possibleTarget in targets)
+        foreach (GameObject possibleTarget in targets)
         {
             target = possibleTarget;
-            Vector3 botToPlayer = possibleTarget.position - botPos;
+            Vector3 botToPlayer = possibleTarget.transform.position - botPos;
             if (Physics.Raycast(botPos + offset, botToPlayer + offset, out hit, 30f)){
                 if (hit.collider.CompareTag("Player") || hit.collider.CompareTag("Bot")){
                     if (Vector3.Angle(botFacing, botToPlayer)<= 45f){
@@ -41,6 +43,10 @@ public class Bot : MonoBehaviour
         return (false, null);
     }
     // Start is called before the first frame update
+    void Awake() {
+        playerInputManager = FindObjectOfType<PlayerInputManager>();
+    }
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -48,6 +54,18 @@ public class Bot : MonoBehaviour
         stateMachine.Initialize(stateMachine.patrolState);
         animator = GetComponentInChildren<Animator>();
         animator.SetBool("isMoving", true);
+    }
+
+    void OnEnable() {
+        playerInputManager.onPlayerJoined += AddTarget;
+    }
+
+    void OnDisable() {
+        playerInputManager.onPlayerJoined -= AddTarget;
+    }
+
+    public void AddTarget(PlayerInput player) {
+        targets.Add(player.gameObject);
     }
 
     // Update is called once per frame

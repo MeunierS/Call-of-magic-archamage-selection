@@ -6,12 +6,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerControl : MonoBehaviour
 {
-
-    [SerializeField] InputActionAsset[] inputAssets;
-    private InputActionMap playerAM;
-    private List<PlayerInput> players = new List<PlayerInput>();
-    [SerializeField] private List<LayerMask> playerLayers;
-    private InputAction move;
+    private PlayerInput playerInput;
     public float jumpHeight;
     public Projectile projectile;
     [SerializeField] private float speed;
@@ -27,23 +22,11 @@ public class PlayerControl : MonoBehaviour
     [HideInInspector]public int personnalKill = 0;
     [HideInInspector]public int personnalDeath = 0;
     private Animator animator;
-    private PlayerInputManager playerInputManager;
-
-    private static int playerNumber = 1;
 
     void Awake(){
-
-        if(playerNumber == 1){
-            //GetComponent<PlayerInput>().actions =p1.asset;
-            playerAM = inputAssets[0].FindActionMap("main");
-            playerNumber++;
-        }
-        else{
-            //GetComponent<PlayerInput>().actions = p2.asset;
-            playerAM = inputAssets[1].FindActionMap("main");
-        }
-        myCamera = GetComponentInChildren<Camera>();
         rb = GetComponent<Rigidbody>();
+        playerInput = GetComponent<PlayerInput>();
+        myCamera = playerInput.camera;
     }
     // Start is called before the first frame update
     void Start()
@@ -80,7 +63,7 @@ public class PlayerControl : MonoBehaviour
             forward = Vector3.ProjectOnPlane(forward,Vector3.up).normalized;
             right = Vector3.ProjectOnPlane(right, Vector3.up).normalized;
 
-            Vector2 movement = move.ReadValue<Vector2>();
+            Vector2 movement = playerInput.actions["Move"].ReadValue<Vector2>();
             if(movement != Vector2.zero){
                 animator.SetBool("isMoving", true);
             }
@@ -93,57 +76,26 @@ public class PlayerControl : MonoBehaviour
     }
     void OnEnable()
     {
-        // if(playerNumber == 1){
-        //     p1.main.Jump.started += OnJump;
-        //     p1.main.Shoot.performed += OnShoot;
-        //     move = p1.main.Move;
-        //     p1.main.Enable();
-        // }
-        // else{
-        //     p2.main.Jump.started += OnJump;
-        //     p2.main.Shoot.performed += OnShoot;
-        //     move = p2.main.Move;
-        //     p2.main.Enable();
-        // }
-        playerAM.FindAction("Jump").started += OnJump;
-        playerAM.FindAction("Shoot").performed += OnShoot;
-        move = playerAM.FindAction("Move");
-        playerAM.Enable();
-
-        //playerInputManager.onPlayerJoined += AddPlayer;
     }
     void OnDisable()
     {
-        // if(playerNumber == 1){
-        //     p1.main.Jump.started -= OnJump;
-        //     p1.main.Shoot.performed -= OnShoot;
-        //     p1.main.Disable();
-        // }
-        // else{
-        //     p2.main.Jump.started -= OnJump;
-        //     p2.main.Shoot.performed -= OnShoot;
-        //     p2.main.Disable();
-        // }
-        playerAM.FindAction("Jump").started -= OnJump;
-        playerAM.FindAction("Shoot").performed -= OnShoot;
-        playerAM.Disable();
-
-        //playerInputManager.onPlayerJoined -= AddPlayer;
     }
-    void OnShoot(InputAction.CallbackContext ctx){
+    public void OnShoot(){
         if (cooldown <= 0){
             cooldown = 1f;
             Projectile instantiatedProjectile = Instantiate(projectile, transform.position + transform.forward * 1f, myCamera.transform.rotation, transform);
             instantiatedProjectile.GetComponent<Rigidbody>().velocity= myCamera.transform.forward * 20;
         }
     }
-    void OnJump(InputAction.CallbackContext ctx){
+    public void OnJump(){
         Vector3 feet = transform.position + Vector3.down;
         if (!Physics.Raycast(feet, Vector3.down, 0.1f)){
             return;
         }
         rb.velocity = Vector3.up  * jumpHeight;
     }
+
+
     public void StartRespawn(){
         StartCoroutine(Respawn());
         
@@ -176,20 +128,5 @@ public class PlayerControl : MonoBehaviour
             animator.SetBool("isOnWall", true);
             return;
         }
-    }
-    public void AddPlayer(PlayerInput player){
-        players.Add(player);
-        Vector3 spawn = new Vector3(45.44f, 0, 30.13f);
-        player.transform.position = spawn;
-
-        //convert layer mask (bit) to int
-        int layerToAdd = (int)Mathf.Log(playerLayers[1].value, 2);
-
-        //set the layer
-        player.GetComponentInChildren<CinemachineFreeLook>().gameObject.layer = layerToAdd;
-        //add the layer (bitwise operation)
-        player.GetComponentInChildren<Camera>().cullingMask |= 1 << layerToAdd;
-        //set the action in the custom cinemachine Input andler
-        player.GetComponentInChildren<InputHandler>().horizontal = player.actions.FindAction("Look");
     }
 }

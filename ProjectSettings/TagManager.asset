@@ -10,6 +10,8 @@ TagManager:
   - SpawnPoint
   - Pause
   - ScoreBoard
+  - MinimapCam
+  - RespawnPoints
   layers:
   - Default
   - TransparentFX

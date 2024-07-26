@@ -121,7 +121,8 @@ Repro creation: 2024/04/06
 + 2024/07/17: player model + bot model from assets; animator + imported animations; changed ground texture
 + 2024/07/19: Reintroduced minimap name of bots; recolor of textures for the different bots; match, menu music & spell sounds effect; mixer and volume settings; rebind controls options
 + 2024/07/22: objective panel on main screen; UI paper elements; cursive font; start of P2 integration
-+ 2024/07/24: 
++ 2024/07/24: multiplayer integration
++ 2024/07/26: multiplayer integration
 
 
 

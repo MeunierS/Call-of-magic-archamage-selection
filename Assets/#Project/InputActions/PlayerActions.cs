@@ -24,7 +24,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
     ""name"": ""PlayerActions"",
     ""maps"": [
         {
-            ""name"": ""mainP1"",
+            ""name"": ""Main"",
             ""id"": ""7a11d207-106d-4ccd-ad10-cde21c5c6474"",
             ""actions"": [
                 {
@@ -152,63 +152,10 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""action"": ""Look"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                }
-            ]
-        },
-        {
-            ""name"": ""mainP2"",
-            ""id"": ""e33eca61-e398-4e71-b7ad-080badb4d31a"",
-            ""actions"": [
-                {
-                    ""name"": ""Shoot"",
-                    ""type"": ""Button"",
-                    ""id"": ""4df27756-d931-4b74-9f9a-293ab4cc682d"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 },
-                {
-                    ""name"": ""Move"",
-                    ""type"": ""Value"",
-                    ""id"": ""38364e87-04f9-419f-a88f-c4aacc1e1b85"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""Jump"",
-                    ""type"": ""Button"",
-                    ""id"": ""c433224d-5ca0-4704-9a37-eb98ec408f0a"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Look"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""c9cabe3e-8162-4023-9614-9ad9b55bd706"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""P2Join"",
-                    ""type"": ""Button"",
-                    ""id"": ""fb102580-df8a-4dd3-80af-f7b28539d658"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
                 {
                     ""name"": """",
-                    ""id"": ""1c70564e-a542-409b-961e-42caf3eb1724"",
+                    ""id"": ""ecac8cbf-3822-4fbd-af40-e02aff87bbc7"",
                     ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -219,7 +166,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""dc79420a-6a02-4649-aba9-8da0d1dcd555"",
+                    ""id"": ""aa9c8edc-7f7d-4e8a-bbfd-4399d6c5bb92"",
                     ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -230,7 +177,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""193a5d9f-c34c-48d4-839b-76aa1daf8733"",
+                    ""id"": ""90790daa-52cc-47f0-83fe-c6bd90f6c704"",
                     ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -241,23 +188,12 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""ad763d12-a514-417c-b0fd-5a9fe8d23660"",
+                    ""id"": ""5f44ef71-4ff2-4c4f-b974-5b4f95dc1b4c"",
                     ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Controller"",
                     ""action"": ""Look"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""fc9208e6-61f0-4a64-8c26-257139767e8f"",
-                    ""path"": ""<Gamepad>/start"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Controller"",
-                    ""action"": ""P2Join"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -268,28 +204,38 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         {
             ""name"": ""Keyboard+Mouse"",
             ""bindingGroup"": ""Keyboard+Mouse"",
-            ""devices"": []
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Keyboard>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                },
+                {
+                    ""devicePath"": ""<Mouse>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
         },
         {
             ""name"": ""Controller"",
             ""bindingGroup"": ""Controller"",
-            ""devices"": []
+            ""devices"": [
+                {
+                    ""devicePath"": ""<Gamepad>"",
+                    ""isOptional"": false,
+                    ""isOR"": false
+                }
+            ]
         }
     ]
 }");
-        // mainP1
-        m_mainP1 = asset.FindActionMap("mainP1", throwIfNotFound: true);
-        m_mainP1_Shoot = m_mainP1.FindAction("Shoot", throwIfNotFound: true);
-        m_mainP1_Move = m_mainP1.FindAction("Move", throwIfNotFound: true);
-        m_mainP1_Jump = m_mainP1.FindAction("Jump", throwIfNotFound: true);
-        m_mainP1_Look = m_mainP1.FindAction("Look", throwIfNotFound: true);
-        // mainP2
-        m_mainP2 = asset.FindActionMap("mainP2", throwIfNotFound: true);
-        m_mainP2_Shoot = m_mainP2.FindAction("Shoot", throwIfNotFound: true);
-        m_mainP2_Move = m_mainP2.FindAction("Move", throwIfNotFound: true);
-        m_mainP2_Jump = m_mainP2.FindAction("Jump", throwIfNotFound: true);
-        m_mainP2_Look = m_mainP2.FindAction("Look", throwIfNotFound: true);
-        m_mainP2_P2Join = m_mainP2.FindAction("P2Join", throwIfNotFound: true);
+        // Main
+        m_Main = asset.FindActionMap("Main", throwIfNotFound: true);
+        m_Main_Shoot = m_Main.FindAction("Shoot", throwIfNotFound: true);
+        m_Main_Move = m_Main.FindAction("Move", throwIfNotFound: true);
+        m_Main_Jump = m_Main.FindAction("Jump", throwIfNotFound: true);
+        m_Main_Look = m_Main.FindAction("Look", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -348,30 +294,30 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // mainP1
-    private readonly InputActionMap m_mainP1;
-    private List<IMainP1Actions> m_MainP1ActionsCallbackInterfaces = new List<IMainP1Actions>();
-    private readonly InputAction m_mainP1_Shoot;
-    private readonly InputAction m_mainP1_Move;
-    private readonly InputAction m_mainP1_Jump;
-    private readonly InputAction m_mainP1_Look;
-    public struct MainP1Actions
+    // Main
+    private readonly InputActionMap m_Main;
+    private List<IMainActions> m_MainActionsCallbackInterfaces = new List<IMainActions>();
+    private readonly InputAction m_Main_Shoot;
+    private readonly InputAction m_Main_Move;
+    private readonly InputAction m_Main_Jump;
+    private readonly InputAction m_Main_Look;
+    public struct MainActions
     {
         private @PlayerActions m_Wrapper;
-        public MainP1Actions(@PlayerActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Shoot => m_Wrapper.m_mainP1_Shoot;
-        public InputAction @Move => m_Wrapper.m_mainP1_Move;
-        public InputAction @Jump => m_Wrapper.m_mainP1_Jump;
-        public InputAction @Look => m_Wrapper.m_mainP1_Look;
-        public InputActionMap Get() { return m_Wrapper.m_mainP1; }
+        public MainActions(@PlayerActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Shoot => m_Wrapper.m_Main_Shoot;
+        public InputAction @Move => m_Wrapper.m_Main_Move;
+        public InputAction @Jump => m_Wrapper.m_Main_Jump;
+        public InputAction @Look => m_Wrapper.m_Main_Look;
+        public InputActionMap Get() { return m_Wrapper.m_Main; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(MainP1Actions set) { return set.Get(); }
-        public void AddCallbacks(IMainP1Actions instance)
+        public static implicit operator InputActionMap(MainActions set) { return set.Get(); }
+        public void AddCallbacks(IMainActions instance)
         {
-            if (instance == null || m_Wrapper.m_MainP1ActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_MainP1ActionsCallbackInterfaces.Add(instance);
+            if (instance == null || m_Wrapper.m_MainActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_MainActionsCallbackInterfaces.Add(instance);
             @Shoot.started += instance.OnShoot;
             @Shoot.performed += instance.OnShoot;
             @Shoot.canceled += instance.OnShoot;
@@ -386,7 +332,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             @Look.canceled += instance.OnLook;
         }
 
-        private void UnregisterCallbacks(IMainP1Actions instance)
+        private void UnregisterCallbacks(IMainActions instance)
         {
             @Shoot.started -= instance.OnShoot;
             @Shoot.performed -= instance.OnShoot;
@@ -402,99 +348,21 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             @Look.canceled -= instance.OnLook;
         }
 
-        public void RemoveCallbacks(IMainP1Actions instance)
+        public void RemoveCallbacks(IMainActions instance)
         {
-            if (m_Wrapper.m_MainP1ActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_MainActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
-        public void SetCallbacks(IMainP1Actions instance)
+        public void SetCallbacks(IMainActions instance)
         {
-            foreach (var item in m_Wrapper.m_MainP1ActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_MainActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_MainP1ActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_MainActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
-    public MainP1Actions @mainP1 => new MainP1Actions(this);
-
-    // mainP2
-    private readonly InputActionMap m_mainP2;
-    private List<IMainP2Actions> m_MainP2ActionsCallbackInterfaces = new List<IMainP2Actions>();
-    private readonly InputAction m_mainP2_Shoot;
-    private readonly InputAction m_mainP2_Move;
-    private readonly InputAction m_mainP2_Jump;
-    private readonly InputAction m_mainP2_Look;
-    private readonly InputAction m_mainP2_P2Join;
-    public struct MainP2Actions
-    {
-        private @PlayerActions m_Wrapper;
-        public MainP2Actions(@PlayerActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Shoot => m_Wrapper.m_mainP2_Shoot;
-        public InputAction @Move => m_Wrapper.m_mainP2_Move;
-        public InputAction @Jump => m_Wrapper.m_mainP2_Jump;
-        public InputAction @Look => m_Wrapper.m_mainP2_Look;
-        public InputAction @P2Join => m_Wrapper.m_mainP2_P2Join;
-        public InputActionMap Get() { return m_Wrapper.m_mainP2; }
-        public void Enable() { Get().Enable(); }
-        public void Disable() { Get().Disable(); }
-        public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(MainP2Actions set) { return set.Get(); }
-        public void AddCallbacks(IMainP2Actions instance)
-        {
-            if (instance == null || m_Wrapper.m_MainP2ActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_MainP2ActionsCallbackInterfaces.Add(instance);
-            @Shoot.started += instance.OnShoot;
-            @Shoot.performed += instance.OnShoot;
-            @Shoot.canceled += instance.OnShoot;
-            @Move.started += instance.OnMove;
-            @Move.performed += instance.OnMove;
-            @Move.canceled += instance.OnMove;
-            @Jump.started += instance.OnJump;
-            @Jump.performed += instance.OnJump;
-            @Jump.canceled += instance.OnJump;
-            @Look.started += instance.OnLook;
-            @Look.performed += instance.OnLook;
-            @Look.canceled += instance.OnLook;
-            @P2Join.started += instance.OnP2Join;
-            @P2Join.performed += instance.OnP2Join;
-            @P2Join.canceled += instance.OnP2Join;
-        }
-
-        private void UnregisterCallbacks(IMainP2Actions instance)
-        {
-            @Shoot.started -= instance.OnShoot;
-            @Shoot.performed -= instance.OnShoot;
-            @Shoot.canceled -= instance.OnShoot;
-            @Move.started -= instance.OnMove;
-            @Move.performed -= instance.OnMove;
-            @Move.canceled -= instance.OnMove;
-            @Jump.started -= instance.OnJump;
-            @Jump.performed -= instance.OnJump;
-            @Jump.canceled -= instance.OnJump;
-            @Look.started -= instance.OnLook;
-            @Look.performed -= instance.OnLook;
-            @Look.canceled -= instance.OnLook;
-            @P2Join.started -= instance.OnP2Join;
-            @P2Join.performed -= instance.OnP2Join;
-            @P2Join.canceled -= instance.OnP2Join;
-        }
-
-        public void RemoveCallbacks(IMainP2Actions instance)
-        {
-            if (m_Wrapper.m_MainP2ActionsCallbackInterfaces.Remove(instance))
-                UnregisterCallbacks(instance);
-        }
-
-        public void SetCallbacks(IMainP2Actions instance)
-        {
-            foreach (var item in m_Wrapper.m_MainP2ActionsCallbackInterfaces)
-                UnregisterCallbacks(item);
-            m_Wrapper.m_MainP2ActionsCallbackInterfaces.Clear();
-            AddCallbacks(instance);
-        }
-    }
-    public MainP2Actions @mainP2 => new MainP2Actions(this);
+    public MainActions @Main => new MainActions(this);
     private int m_KeyboardMouseSchemeIndex = -1;
     public InputControlScheme KeyboardMouseScheme
     {
@@ -513,19 +381,11 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             return asset.controlSchemes[m_ControllerSchemeIndex];
         }
     }
-    public interface IMainP1Actions
+    public interface IMainActions
     {
         void OnShoot(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
-    }
-    public interface IMainP2Actions
-    {
-        void OnShoot(InputAction.CallbackContext context);
-        void OnMove(InputAction.CallbackContext context);
-        void OnJump(InputAction.CallbackContext context);
-        void OnLook(InputAction.CallbackContext context);
-        void OnP2Join(InputAction.CallbackContext context);
     }
 }

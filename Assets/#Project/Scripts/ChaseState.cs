@@ -7,7 +7,7 @@ using UnityEngine.AI;
 public class ChaseState : IState
 {
     public NavMeshAgent agent;
-    private Transform target;
+    private GameObject target;
     private Bot bot;
     private BotStateMachine stateMachine;
     public float cooldown = 1f;
@@ -20,7 +20,7 @@ public class ChaseState : IState
         target = bot.CanSeePlayer().tar;
     }
     public void Perform(){
-        agent.SetDestination(target.position);
+        agent.SetDestination(target.transform.position);
         //bot shoot at target
         Shoot();
         if (!bot.CanSeePlayer().see){
