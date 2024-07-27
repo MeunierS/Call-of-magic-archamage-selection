@@ -5,10 +5,10 @@ using UnityEngine;
 using TMPro;
 public class PlayerUI : MonoBehaviour
 {
-    //*Order : [0 - 5] Bot 0 -> Bot 5, [6]  Player
-    [SerializeField] TMP_Text[] scores;
-    // Bot names: 0-Carlina, 1-Gideon, 2-Uliath, 3-Remagine, 4-Sicofla, 5-Jaygee, 6-You
-    [SerializeField] public Transform[] players;
+    //*Order : [0 - 5] Bot 0 -> Bot 5, [6]  Player1, [7] Player2
+    [SerializeField] public TMP_Text[] scores;
+    // Bot names: 0-Carlina, 1-Gideon, 2-Uliath, 3-Remagine, 4-Sicofla, 5-Jaygee, 6-Player 1, 7-Player 2
+    [SerializeField] public List<Transform> players;
     
     // Start is called before the first frame update
     void Start()

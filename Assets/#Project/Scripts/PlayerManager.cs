@@ -12,8 +12,7 @@ public class PlayerManager : MonoBehaviour
     private PlayerInputManager playerInputManager;
     [SerializeField]private Transform[] spawnPoints;
     [SerializeField]private RenderTexture[] minimaps;
-    [SerializeField]private Bot[] bots;
-
+    [HideInInspector]public List<PlayerUI> playerUIs;
     public int playerId;
     // Start is called before the first frame update
     void Awake()
@@ -57,7 +56,19 @@ public class PlayerManager : MonoBehaviour
         //add RespawnPoints to player
         player.gameObject.GetComponent<PlayerControl>().spawnpoints = FindFirstObjectByType<SpawnPointsTarget>().gameObject.transform;
 
-        //Add P2 to leaderboard
+        //deactive audio listener of P2+ on spawn
+        if(playerId > 0){
+            player.GetComponentInChildren<AudioListener>().enabled = false;
+        }
+        //add P1+ UI to lists of UIs
+        playerUIs.Add(player.gameObject.GetComponent<PlayerUI>());
+        //add player to players list of UIs
+        foreach (PlayerUI UI in playerUIs)
+        {
+            UI.players.Add(player.transform);
+        }
 
+        //activate P1+ score to leaderboard
+        player.gameObject.GetComponent<PlayerUI>().scores[playerId+6].gameObject.SetActive(true);
     }
 }

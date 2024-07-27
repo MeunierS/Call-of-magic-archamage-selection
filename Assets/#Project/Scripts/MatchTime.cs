@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using System.Globalization;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class MatchTime : MonoBehaviour
 {
@@ -36,7 +37,11 @@ public class MatchTime : MonoBehaviour
             MatchData._kills[i] = playerUI.players[i].transform.GetComponent<Bot>().personnalKill;
             MatchData._deaths[i]= playerUI.players[i].transform.GetComponent<Bot>().personnalDeath;    
         }
-        MatchData._kills[6]= playerUI.players[6].transform.GetComponent<PlayerControl>().personnalKill;
-        MatchData._deaths[6]= playerUI.players[6].transform.GetComponent<PlayerControl>().personnalDeath;
+        //!
+       // foreach (PlayerInput player in collection)
+        {
+            MatchData._kills[6]= playerUI.players[6].transform.GetComponent<PlayerControl>().personnalKill;
+            MatchData._deaths[6]= playerUI.players[6].transform.GetComponent<PlayerControl>().personnalDeath;
+        }
     }
 }

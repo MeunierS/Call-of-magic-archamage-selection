@@ -2667,13 +2667,12 @@ MonoBehaviour:
   - {fileID: 1345210676731971071}
   - {fileID: 1345210676731971071}
   players:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 8945560965110697402}
+  - {fileID: 1865539893251848543, guid: 4fe2e6d08f8eefa45bf20a50cd398a2b, type: 3}
+  - {fileID: 3136787076818592275, guid: 5d861cf9f3dd23341b3ab27f7a612a71, type: 3}
+  - {fileID: 4134883188523061148, guid: ebeac97d406655147948cf269f63096c, type: 3}
+  - {fileID: 9030648025280428338, guid: df479fe9a9ccd15429b9418cce574856, type: 3}
+  - {fileID: 3822999597393103741, guid: 7a15d7a9b24926c4fa85317d5ae57877, type: 3}
+  - {fileID: 7801608933962821305, guid: 274aee9f6ab13d94fba65cc71f3dafcf, type: 3}
 --- !u!114 &7306784704793884143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5132,7 +5131,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6454279560109848641}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.01809378, y: 0.000000059604645, z: -0.000000022351742, w: 0.9998364}
+  m_LocalRotation: {x: 0.018093765, y: 0.00000008940697, z: -0.000000044703484, w: 0.9998364}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -5211,7 +5210,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6586211112652468837}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.018237174, y: 0.00000011920929, z: -0.000000037252903, w: 0.9998337}
+  m_LocalRotation: {x: -0.018237174, y: 0.00000008940697, z: -0.000000022351742, w: 0.9998337}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6033,7 +6032,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7623441103469232348}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.000000029802322, y: 0.000000059604645, z: -0.000000026077032,
+  m_LocalRotation: {x: -0.000000029802322, y: 0.000000059604645, z: -0.000000033527613,
     w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -6105,7 +6104,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7413661498056708416
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7344,7 +7343,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3042031183456922422
 RectTransform:
   m_ObjectHideFlags: 0
