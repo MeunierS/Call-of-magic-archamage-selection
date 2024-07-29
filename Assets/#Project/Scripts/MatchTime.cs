@@ -25,23 +25,8 @@ public class MatchTime : MonoBehaviour
         if(timeElapsed < 0){
             EndMatch();
         }
-        
     }
     void EndMatch(){
-        SaveMatchData();
         SceneManager.LoadScene("VictoryScreen");
-    }
-    void SaveMatchData(){
-        for (int i = 0; i < 6; i++)
-        {
-            MatchData._kills[i] = playerUI.players[i].transform.GetComponent<Bot>().personnalKill;
-            MatchData._deaths[i]= playerUI.players[i].transform.GetComponent<Bot>().personnalDeath;    
-        }
-        //!
-       // foreach (PlayerInput player in collection)
-        {
-            MatchData._kills[6]= playerUI.players[6].transform.GetComponent<PlayerControl>().personnalKill;
-            MatchData._deaths[6]= playerUI.players[6].transform.GetComponent<PlayerControl>().personnalDeath;
-        }
     }
 }

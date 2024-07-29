@@ -123,8 +123,8 @@ Repro creation: 2024/04/06
 + 2024/07/22: objective panel on main screen; UI paper elements; cursive font; start of P2 integration
 + 2024/07/24: multiplayer integration
 + 2024/07/26: multiplayer integration base finished
-+ 2024/07/27: deactivated P2 audio listener on spawn, multiplayer UI change part 1
-
++ 2024/07/27: deactivated P2+ audio listener on spawn, multiplayer UI change part 1
++ 2024/07/29: multiplayer scoreboard UI, multiplayer projetile, desactivate minimap in multiplayer
 
 
 <a id="Credits"></a>

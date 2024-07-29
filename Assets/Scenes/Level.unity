@@ -12439,8 +12439,6 @@ MonoBehaviour:
   minimaps:
   - {fileID: 8400000, guid: 9beeca5cd14a5344f8c2cec306519def, type: 2}
   - {fileID: 8400000, guid: 02b7edb176e36494da7ad53e60688697, type: 2}
-  playerUIs: []
-  bots: []
   playerId: 0
 --- !u!1001 &1877013849
 PrefabInstance:

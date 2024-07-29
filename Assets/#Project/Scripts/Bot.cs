@@ -19,8 +19,6 @@ public class Bot : MonoBehaviour
     public bool isRespawning = false;
     private Animator animator;
     [SerializeField]public int scoreTarget;
-    [HideInInspector]public int personnalKill = 0;
-    [HideInInspector]public int personnalDeath = 0;
     private PlayerInputManager playerInputManager;
 
     public (bool see, GameObject tar) CanSeePlayer(){

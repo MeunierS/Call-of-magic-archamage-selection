@@ -2591,8 +2591,6 @@ MonoBehaviour:
   isRespawning: 0
   spawnpoints: {fileID: 0}
   scoreTarget: 6
-  personnalKill: 0
-  personnalDeath: 0
 --- !u!54 &1145900663094982411
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2665,7 +2663,7 @@ MonoBehaviour:
   - {fileID: 8094551153515655710}
   - {fileID: 1066026614351587607}
   - {fileID: 1345210676731971071}
-  - {fileID: 1345210676731971071}
+  - {fileID: 2392692649789724546}
   players:
   - {fileID: 1865539893251848543, guid: 4fe2e6d08f8eefa45bf20a50cd398a2b, type: 3}
   - {fileID: 3136787076818592275, guid: 5d861cf9f3dd23341b3ab27f7a612a71, type: 3}
@@ -2673,6 +2671,7 @@ MonoBehaviour:
   - {fileID: 9030648025280428338, guid: df479fe9a9ccd15429b9418cce574856, type: 3}
   - {fileID: 3822999597393103741, guid: 7a15d7a9b24926c4fa85317d5ae57877, type: 3}
   - {fileID: 7801608933962821305, guid: 274aee9f6ab13d94fba65cc71f3dafcf, type: 3}
+  minimap: {fileID: 6455100076070038113}
 --- !u!114 &7306784704793884143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3474,8 +3473,8 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
-  m_Camera: {fileID: 0}
-  m_PlaneDistance: 100
+  m_Camera: {fileID: 7278926287720422148}
+  m_PlaneDistance: 5
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
@@ -3576,7 +3575,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -26}
   m_SizeDelta: {x: 1800, y: 1000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2953379807232846766

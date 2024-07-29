@@ -12,7 +12,6 @@ public class PlayerManager : MonoBehaviour
     private PlayerInputManager playerInputManager;
     [SerializeField]private Transform[] spawnPoints;
     [SerializeField]private RenderTexture[] minimaps;
-    [HideInInspector]public List<PlayerUI> playerUIs;
     public int playerId;
     // Start is called before the first frame update
     void Awake()
@@ -47,11 +46,25 @@ public class PlayerManager : MonoBehaviour
         //set the player index in the Cinemachine Input Provider
         player.GetComponentInChildren<CinemachineInputProvider>().PlayerIndex = playerId;
 
-        //! TO DEBUG
+        //P2+ change his scoreTarget
+        if(playerId > 0){
+            player.gameObject.GetComponent<PlayerControl>().scoreTarget += playerId;
+        }
+
+        //TODO separate UIs during split-screen
         //set minimap render texture to each player
-        // if (GetComponentInChildren<Camera>().CompareTag("MinimapCam")){
-        //     GetComponentInChildren<Camera>().targetTexture = minimaps[playerId];
+        // if (player.GetComponentInChildren<Camera>().targetTexture != null){
+        //     player.GetComponentInChildren<Camera>().targetTexture = minimaps[playerId];
         // }
+
+        //*temporary fix for split-screen
+        //deactivate minimap during split-screen
+        if(playerId > 0){
+            for (int i = 0; i < players.Count; i++)
+        {
+            players[i].gameObject.GetComponent<PlayerUI>().minimap.gameObject.SetActive(false);
+        }
+        }
 
         //add RespawnPoints to player
         player.gameObject.GetComponent<PlayerControl>().spawnpoints = FindFirstObjectByType<SpawnPointsTarget>().gameObject.transform;
@@ -60,15 +73,18 @@ public class PlayerManager : MonoBehaviour
         if(playerId > 0){
             player.GetComponentInChildren<AudioListener>().enabled = false;
         }
-        //add P1+ UI to lists of UIs
-        playerUIs.Add(player.gameObject.GetComponent<PlayerUI>());
-        //add player to players list of UIs
-        foreach (PlayerUI UI in playerUIs)
+        //add player transform to UIs
+        foreach (PlayerInput playerInput in players)
         {
-            UI.players.Add(player.transform);
+            playerInput.gameObject.GetComponent<PlayerUI>().players.Add(player.transform);
         }
-
         //activate P1+ score to leaderboard
-        player.gameObject.GetComponent<PlayerUI>().scores[playerId+6].gameObject.SetActive(true);
+        for (int i = 0; i < players.Count; i++)
+        {
+            for (int j = 0; j <= playerId; j++)
+            {
+                players[i].gameObject.GetComponent<PlayerUI>().scores[j+6].gameObject.SetActive(true);
+            }
+        }
     }
 }

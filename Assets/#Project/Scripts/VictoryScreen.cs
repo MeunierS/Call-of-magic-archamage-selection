@@ -47,7 +47,15 @@ public class VictoryScreen : MonoBehaviour
         
     }
     public void ReturnToMain(){
-
+        ResetScoreboard();
         SceneManager.LoadScene("MainMenu");
+    }
+
+    private void ResetScoreboard()
+    {
+        for (int i = 0; i < 8; i++){
+            MatchData._kills[i]=0;
+            MatchData._deaths[i]=0;
+        }
     }
 }

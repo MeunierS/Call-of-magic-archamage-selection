@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
@@ -35,10 +36,12 @@ public class Projectile : MonoBehaviour
                     MatchData._deaths[other.GetComponentInParent<PlayerControl>().scoreTarget]++;
                 }
                 //todo future case a player kill another player
-
+                if(this.GetComponentInParent<PlayerControl>() != null){
+                    MatchData._kills[this.GetComponentInParent<PlayerControl>().scoreTarget]++;
+                    MatchData._deaths[other.GetComponentInParent<PlayerControl>().scoreTarget]++;
+                }
                 //launch dissolve (+ block shooting + block movement)
                 other.GetComponent<ObjectDissolve>().StartDissolve();
-
                 //respawn victim somewhere else
                 other.GetComponentInParent<PlayerControl>().StartRespawn();
             }
@@ -58,7 +61,6 @@ public class Projectile : MonoBehaviour
                 }
                 //launch dissolve (+ block shooting + block movement)
                 other.GetComponentInChildren<ObjectDissolve>().StartDissolve();
-
                 //respawn victim somewhere else
                 other.GetComponentInParent<Bot>().StartRespawn();
             }

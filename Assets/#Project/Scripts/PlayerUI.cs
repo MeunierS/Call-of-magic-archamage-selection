@@ -9,6 +9,7 @@ public class PlayerUI : MonoBehaviour
     [SerializeField] public TMP_Text[] scores;
     // Bot names: 0-Carlina, 1-Gideon, 2-Uliath, 3-Remagine, 4-Sicofla, 5-Jaygee, 6-Player 1, 7-Player 2
     [SerializeField] public List<Transform> players;
+    [SerializeField] public Transform minimap;
     
     // Start is called before the first frame update
     void Start()

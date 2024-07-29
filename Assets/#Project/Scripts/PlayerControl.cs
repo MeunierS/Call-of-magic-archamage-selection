@@ -19,8 +19,6 @@ public class PlayerControl : MonoBehaviour
     public bool isRespawning = false;
     public Transform spawnpoints;
     [HideInInspector]public int scoreTarget = 6;
-    [HideInInspector]public int personnalKill = 0;
-    [HideInInspector]public int personnalDeath = 0;
     private Animator animator;
 
     void Awake(){

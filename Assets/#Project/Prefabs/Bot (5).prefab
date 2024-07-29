@@ -352,8 +352,6 @@ MonoBehaviour:
   respawnTimer: 2.1
   isRespawning: 0
   scoreTarget: 5
-  personnalKill: 0
-  personnalDeath: 0
 --- !u!1 &1541337612693311611
 GameObject:
   m_ObjectHideFlags: 0
@@ -591,7 +589,7 @@ GameObject:
   - component: {fileID: 5911819761744003852}
   - component: {fileID: 7026688020636228274}
   - component: {fileID: 1406464774868471709}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1412,7 +1410,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4445343544700779699}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -36, y: 0, z: 37.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2143,7 +2141,7 @@ GameObject:
   - component: {fileID: 3903842524909288113}
   - component: {fileID: 5399034764952272343}
   - component: {fileID: 3559173679767392437}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
