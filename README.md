@@ -1,6 +1,7 @@
 ﻿# Cutetopia-Magic-Duelers
-![](https://img.shields.io/badge/Project-NotReady-red)
-![](https://img.shields.io/badge/GCD-Incomplete-yellow)
+![](https://img.shields.io/badge/Project-Ready-green)
+![](https://img.shields.io/badge/GCD-Done-green)
+![](https://img.shields.io/badge/Version-1.0-blue)
 
 # Table of Contents
 - [Objective](#Objective)
@@ -100,9 +101,11 @@ Due to limitation in the time permitted for the project a number of restriction 
   
 <a id="Syst"></a>
 ### Game Systems
+N/A
 
 <a id="Int"></a>
 ### Interactivity
+N/A
 
 <a id="Progress"></a>
 ## Progress
@@ -124,7 +127,7 @@ Repro creation: 2024/04/06
 + 2024/07/24: multiplayer integration
 + 2024/07/26: multiplayer integration base finished
 + 2024/07/27: deactivated P2+ audio listener on spawn, multiplayer UI change part 1
-+ 2024/07/29: multiplayer scoreboard UI, multiplayer projetile, desactivate minimap in multiplayer
++ 2024/07/29: multiplayer scoreboard UI, multiplayer projetile, desactivate minimap in multiplayer, update README for release
 
 
 <a id="Credits"></a>
