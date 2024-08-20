@@ -1,4 +1,4 @@
-﻿# Cutetopia-Magic-Duelers
+﻿# Call-of-magic-archmage-selection
 ![](https://img.shields.io/badge/Project-Ready-green)
 ![](https://img.shields.io/badge/GCD-Done-green)
 ![](https://img.shields.io/badge/Version-1.0-blue)
